@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>學期末成果發表｜五大部落</title>
+  <style>
+    html, body {
+      width: 100%; height: 100%; margin: 0; padding: 0;
+      font-family: "Noto Sans TC", sans-serif; background: #000; overflow-x: hidden;
+    }
+    body { background: #000; min-height: 100vh; }
+
+    /* 0區首頁 */
+    .fullscreen-header {
+      min-height: 100vh; width: 100vw;
+      background: #000; color: #fff;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; position: relative; z-index: 10;
+    }
+    .fullscreen-header .main-title {
+      font-size: 3.6rem; font-weight: 900; letter-spacing: 8px; margin-bottom: 28px;
+      text-shadow: 0 3px 38px #000, 0 2px 2px #444; line-height: 1.18;
+    }
+    .fullscreen-header .sub-title {
+      font-size: 1.9rem; letter-spacing: 5px; color: #fff6d0; opacity: 0.98;
+      text-shadow: 0 1px 14px #222; line-height: 2.3; margin-bottom: 14px;
+    }
+    .fullscreen-header .scroll-btn {
+      margin-top: 58px; padding: 12px 44px; font-size: 1.25rem;
+      border-radius: 8px; background: #222; color: #fff;
+      border: none; cursor: pointer; letter-spacing: 2px;
+      box-shadow: 0 2px 10px #0005;
+      transition: background .22s, color .22s, transform .18s;
+    }
+    .fullscreen-header .scroll-btn:hover {
+      background: #fff; color: #1a1a1a; transform: translateY(2px) scale(1.07);
+    }
+    /* 0-1區漸層 */
+    .between-gradient {
+      width: 100vw;
+      height: 88px; /* 可依你的設計調整 */
+      background: linear-gradient(
+        to bottom,
+        #000 0%,      /* 上：全黑 */
+        rgba(0,0,0,0) 100%  /* 下：全透明 */
+      );
+      pointer-events: none; /* 防止遮擋點擊 */
+      z-index: 10;
+    }
+
+    /* Hero 區 */
+    .hero-wrap {
+      position: relative; width: 100vw; min-height: 120vh;
+      background: #000; overflow: hidden; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    }
+    .hero-bg {
+      position: absolute; left: 0; top: 0;
+      width: 100vw; height: 130vh;
+      background-size: cover; background-position: center;
+      filter: blur(24px) brightness(.97) contrast(1.1);
+      z-index: 1; transition: background-image 0.6s;
+      pointer-events: none; background-color: #111;
+    }
+    .hero-gradient {
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100vw; height: 75vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-main {
+      position: relative; z-index: 5; width: 100vw;
+      display: flex; flex-direction: column; align-items: center;
+      margin-top: 8vh;
+    }
+    .hero-content {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; width: 100%;
+    }
+    .hero-img-container {
+      width: min(350px, 95vw); aspect-ratio: 1/1.2;
+      display: flex; align-items: center; justify-content: center;
+      background: none; margin: 0 auto 2vh auto;
+    }
+    .hero-img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 16px; box-shadow: 0 12px 44px 0 rgba(0,0,0,.48);
+      border: none; background: none; display: block;
+    }
+    .hero-title {
+      margin-top: 16px; font-size: 2.8rem; color: #fff; text-align: center;
+      font-weight: bold; letter-spacing: 6px;
+      text-shadow: 0 0 18px rgba(0,0,0,.82);
+    }
+    .hero-subtitle {
+      color: #fff; opacity: 0.94; text-align: center;
+      font-size: 1.25rem; margin-top: 8px; letter-spacing: 2.5px;
+    }
+    .nav-arrow {
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.60);
+      display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:8;
+      transition:background .3s;
+      user-select: none; border:none; outline:none;
+    }
+    .nav-arrow.left{left:18px} .nav-arrow.right{right:18px}
+    .nav-arrow:hover{background:rgba(0,0,0,1)}
+    .nav-arrow span{font-size:2.1rem;color:#fff;line-height:1}
+    .footer-nav {
+      margin-top: 6vh !important;
+      display:flex;gap:1.4rem;z-index:10;justify-content:center;
+      width: 100%; flex-wrap: wrap;
+    }
+    .footer-nav button{
+      padding:.75rem 1.65rem;border:1.7px solid rgba(255,255,255,.85);
+      background:rgba(0,0,0,.44);color:#fff;backdrop-filter:blur(4px);
+      border-radius:6px;cursor:pointer;transition:background .3s,color .3s;
+      font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 12px;
+    }
+    .footer-nav button.active,.footer-nav button:hover{background:rgba(255,255,255,.99);color:#111}
+
+    .desc-section {
+      width: 100%;
+      background: #000; 
+      color: #fff;
+      min-height: 52vh; box-shadow: 0 -8px 36px 0 rgba(0,0,0,0.13);
+      margin: 0; padding: 52px 0 32px 0; /* 上移一點 */
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      position: relative; z-index: 8;
+      overflow: hidden; text-align: center;
+    }
+    .desc-title {
+      font-size: 2.2rem; font-weight: bold; letter-spacing: 5px; margin-bottom: 22px; text-align: center;
+      color: #fff; margin-top: 18px; text-shadow: 0 2px 20px #444;
+    }
+    .desc-content {
+      font-size: 1.16rem;
+      line-height: 2.1;
+      max-width: auto;   /* 桌機預設 */
+      margin-bottom: 30px;
+      text-align: center;
+      color: #f2f2f2;
+      text-shadow: 0 2px 16px #222;
+      white-space: pre-line; /* 保留文字中的換行 */
+    }
+    #toReportBtn {
+      background: #1a1a1a; color: #fff; border-radius: 7px;
+      padding: 11px 36px; font-size: 1.11rem; border: 1px solid #2d2d2d; cursor: pointer; margin-top: 16px;
+      transition: background .22s, color .22s;
+    }
+    #toReportBtn:hover { background: #fff; color: #111; }
+    @media (max-width: 900px) {
+      .fullscreen-header .main-title { font-size: 2.2rem; }
+      .fullscreen-header .sub-title { font-size: 1.14rem; }
+      .fullscreen-header .scroll-btn { font-size: 1.08rem; padding: 10px 28px; }
+      .hero-img-container { width: 90vw; }
+      .desc-title { font-size: 1.5rem; }
+      .desc-content { font-size: 1.03rem; }
+    }
+    @media (max-width: 600px) {
+      .fullscreen-header .main-title { font-size: 1.3rem; }
+      .fullscreen-header .sub-title { font-size: 0.8rem; }
+      .fullscreen-header .scroll-btn { font-size: .88rem; padding: 7px 18px; }
+      .hero-img-container { width: 99vw; }
+      .desc-section { padding: 18px 0 12px; }
+      .hero-title { font-size: 1.2rem;}
+    }
+
+
+
+    .missions-section {
+      position: relative;
+      width: 100%;
+      min-height: 125vh; /* 若需要更長延伸可加大此數值 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .missions-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; /* 統一使用百分比 */
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      opacity: 1;
+      filter: blur(8px);
+      transition: opacity 0.6s;
+    }
+
+    /* CSS：背景淡入淡出效果 */
+    .missions-bg {
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    .missions-gradient {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        #000 0%,
+        rgba(0, 0, 0, 0) 100%
+      ) !important;
+    }
+
+    .missions-cards-row {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      max-width: 100vw;      /* 改成 max-width */
+      padding: 0 3vw;        /* 加左右內距避免被切到 */
+      margin-top: -10vh;
+      gap: 3vw;
+      min-height: 52vh;
+      box-sizing: border-box;
+    }
+
+    .mission-card {
+      width: 250px; height: 350px;
+      background: rgba(22, 22, 22, 0.85);
+      border-radius: 22px;
+      box-shadow: 0 12px 44px rgba(0,0,0,0.38);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform .32s, box-shadow .32s;
+    }
+    .mission-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 18px;
+      box-shadow: none;
+      transition: transform .32s;
+      background: none;
+      border: none;
+      display: block;
+    }
+    .mission-card:hover {
+      transform: scale(1.09) translateY(-16px);
+      box-shadow: 0 18px 60px 0 rgba(0,0,0,.42);
+    }
+    .mission-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* 底部說明框 */
+    .missions-desc-dialog {
+      position: relative;
+      z-index: 4;
+      background: rgba(20,20,20,0.92);
+      color: #fff;
+      border-radius: 18px;
+      margin: 6vh auto 0 auto;
+      padding: 28px 32px 24px 32px;
+      min-width: 340px;
+      max-width: 800px;
+      min-height: 72px;
+      text-align: center;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.18);
+      font-size: 1.14rem;
+    }
+    .missions-desc-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+    .missions-desc-content {
+      color: #f8f8f8;
+      font-size: 1.13rem;
+      letter-spacing: 1.5px;
+    }
+    .missions-gradient {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%, /* 從透明開始 */
+        rgba(0, 0, 0, 0.7) 80%, /* 漸層到黑色 */
+        #111 100% /* 最終過渡到頁腳的背景色 */
+      );
+    }
+    /* RWD (依需求調整) */
+    @media (max-width: 900px) {
+      .mission-card { width: 35vw; height: 180px; }
+      .missions-cards-row { gap: 2vw; }
+      .missions-desc-dialog { padding: 14px 8vw 14px 8vw; font-size: 1.06rem; }
+    }
+    @media (max-width: 600px) {
+      .missions-cards-row { flex-direction: column; align-items: center; }
+      .mission-card { width: 87vw; height: 190px; margin: 8px 0; }
+    }
+
+    /* 額外內容區塊樣式 */
+    .extra-section {
+      width: 100%;
+      min-height: 100vh;      /* 佔滿整個瀏覽器視窗高度 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #000;       /* 與部落簡述相同背景 */
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 區段內內容容器 (共用) */
+    .extra-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    /* 置中排列：圖片與文字都置中 */
+    .extra-content.centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px; /* 增加上下內距 */
+    }
+
+    /* 反轉排列：使原本 image 在前的順序反轉 */
+    .reverse-layout {
+      flex-direction: row-reverse;
+    }
+
+    /* 反轉排列後，覆寫 extra-text 讓文字靠左，並調整邊距 */
+    .reverse-layout .extra-text {
+      text-align: left;
+      padding-right: 20px;
+      padding-left: 0;
+      margin-left: -120px; /* 負值可根據需要調整，讓文字往左移 */
+    }
+
+    /* 原有內容：圖片、標題、文字樣式保持不變 */
+    .extra-img {
+      flex: 1;
+      text-align: left;
+    }
+
+    .extra-img img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .extra-text {
+      flex: 1;
+      /* 預設為右對齊，但 reverse-layout 下已覆寫 */
+      text-align: right;
+      padding-left: 20px;
+    }
+
+    .extra-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .extra-desc {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #eee;
+      text-shadow: 0 1px 8px #000;
+      white-space: pre-line; /* 加入此屬性以保留換行 */
+    }
+
+    /* 反向佈局用於圖片在左文字在右的情況 */
+    .reverse-layout {
+      flex-direction: row-reverse;
+    }
+
+    /* 新增樣式 */
+    .extra-content-container {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .extra-text-area {
+      width: 50%;
+      padding: 20px;
+      text-align: left; /* 文字靠左 */
+    }
+
+    #extra-geolore .extra-text-area,
+    #extra-credo .extra-text-area {
+      text-align: center; /* 文字置中 */
+    }
+
+    .extra-image-area {
+      width: 50%;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .extra-image-area img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .extra-title {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #fff;
+      text-shadow: 0 2px 10px #000;
+    }
+
+    .extra-desc {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #eee;
+      text-shadow: 0 1px 8px #000;
+      white-space: pre-line; /* 加入此屬性以保留換行 */
+    }
+    
+    /* 調整寬度 */
+    #extra-geolore .extra-desc,
+    #extra-credo .extra-desc {
+      max-width: none; /* 不限制內容寬度 */
+      margin: 0 auto;
+    }
+
+    /* 向左移 */
+    .extra-content-container .extra-text-area {
+      margin-left: -5%; /* 調整文字區塊向左偏移 */
+    }
+
+    /* 移除地理故事與部落信條父容器的寬度限制 */
+    #extra-geolore .extra-content,
+    #extra-credo .extra-content {
+      max-width: none;
+      width: 100%;
+    }
+
+    /* 使創生神、天文英雄、變形英雄的圖片縮小、向左移並在容器中垂直置中 */
+    #extra-creator .extra-content-container,
+    #extra-astror .extra-content-container,
+    #extra-transformer .extra-content-container {
+      align-items: center; /* 垂直置中 */
+    }
+
+    #extra-creator .extra-image-area,
+    #extra-astror .extra-image-area,
+    #extra-transformer .extra-image-area {
+      width: 40%;         /* 調整圖片區塊寬度，縮小圖片 */
+      margin-left: 20%;    /* 向左移動圖片區塊，可根據需要調整 */
+      display: flex;
+      align-items: center; /* 圖片在容器中垂直置中 */
+      justify-content: center;
+    }
+
+    #extra-creator .extra-image-area img,
+    #extra-astror .extra-image-area img,
+    #extra-transformer .extra-image-area img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .missions-title {
+      color: #fff;
+      font-size: 3.4rem;         /* 更大 */
+      letter-spacing: 7px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 100px;          /* 往下 */
+      margin-bottom: 12px;       /* 與下方區塊距離也加大 */
+      text-shadow: 0 2px 18px #000, 0 1px 2px #444;
+      z-index: 5;
+      position: relative;
+    }
+
+    /* Footer 樣式 */
+    .site-footer {
+      background: #111;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    .footer-content a {
+      color: #fff;
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .footer-content a:hover {
+      color: #ffd700;
+    }
+
+    /* 目錄樣式 */
+    .page-index {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      max-width: 200px;
+      font-size: 0.9rem;
+    }
+    /* 移除 details 預設圖示 */
+    .page-index summary {
+      list-style: none;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+    .page-index summary::-webkit-details-marker {
+      display: none;
+    }
+    /* 漢堡圖示 */
+    .hamburger-icon {
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
+    .hamburger-icon div {
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      margin: 3px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    /* 收展選單樣式 */
+    .page-index ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 5px;
+    }
+    .page-index ul li {
+      margin: 5px 0;
+    }
+    .page-index ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .page-index ul li a:hover {
+      text-decoration: underline;
+    }
+    
+    /* 手機版可調整 */
+    @media (max-width: 600px) {
+      .page-index {
+        width: calc(100% - 20px);
+        max-width: none;
+        font-size: 1rem;
+      }
+    }
+
+    /* 禁用所有元素的文字選取 */
+    * {
+      -webkit-user-select: none; /* Chrome, Opera, Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* Internet Explorer/Edge */
+      user-select: none;         /* 標準屬性 */
+    }
+
+    /* 視覺小說區塊樣式 */
+    .visual-novel-section {
+      width: 100%;
+      padding: 120px 20px;
+      background: #000;
+      text-align: center;
+      position: relative;
+      z-index: 8;
+    }
+
+    .vn-title {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      letter-spacing: 4px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .vn-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .vn-btn {
+      padding: 15px 30px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.6);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+    }
+
+    .vn-btn:hover {
+      background: #fff;
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* 視覺小說區塊章節樣式 */
+    .vn-chapter {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 15px;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .vn-subtitle {
+      color: #fff;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .vn-quote {
+      color: rgba(255, 255, 255, 0.8);
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .vn-title {
+        font-size: 1.8rem;
+      }
+      
+      .vn-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .vn-btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+</head>
+<body>
+  <!-- 可摺疊的頁面索引 -->
+  <details class="page-index">
+    <summary>
+      <span class="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </span>
+    </summary>
+    <ul>
+      <li><a href="#fullscreenHeader">首頁</a></li>
+      <li><a href="#heroSection">五大部落</a></li>
+      <li><a href="#descSection">部落簡述</a></li>  <!-- 改為連到 descSection -->
+      <li><a href="#extra-creator">創生神</a></li>
+      <li><a href="#extra-geolore">地理故事</a></li>
+      <li><a href="#extra-astror">天文英雄</a></li>
+      <li><a href="#extra-transformer">變形英雄</a></li>
+      <li><a href="#extra-credo">部落信條</a></li>
+      <li><a href="#visualNovelSection">視覺小說</a></li>
+      <li><a href="#missionsSection">四大任務卡</a></li>
+      <li><a href="#siteFooter">頁腳</a></li>
+    </ul>
+  </details>
+  
+  <!-- 0首頁 -->
+  <div class="fullscreen-header" id="fullscreenHeader">
+    <div class="main-title">說故事的力量—<br>古典短篇小說選讀</div>
+    <div class="sub-title">古典短篇小說選讀 × 部落創建課程</div>
+    <button class="scroll-btn" onclick="scrollToHero()">開始探索</button>
+  </div>
+
+  <!-- 0-1過渡漸層 -->
+  <div class="between-gradient"></div>
+
+  <!-- Hero 部落內容 -->
+  <div class="hero-wrap" id="heroSection">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-gradient" id="heroGradient"></div>
+    <button class="nav-arrow left" id="prevArrow" tabindex="0"><span>&laquo;</span></button>
+    <button class="nav-arrow right" id="nextArrow" tabindex="0"><span>&raquo;</span></button>
+    <div class="hero-main">
+      <div class="hero-content">
+        <div class="hero-img-container">
+          <img src="" alt="" class="hero-img lozad" id="heroImg" data-src=""/>
+        </div>
+        <div class="hero-title" id="heroTitle"></div>
+        <div class="hero-subtitle" id="heroSubtitle"></div>
+      </div>
+      <div class="footer-nav" id="footerNav"></div>
+    </div>
+  </div>
+
+  <!-- 部落簡述區塊 -->
+  <div class="desc-section" id="descSection">
+    <div class="desc-title" id="descTitle"></div>
+    <div class="desc-content" id="descContent"></div>
+    <button id="toReportBtn" style="display:none;margin-top:18px;">前往該部落簡報</button>
+  </div>
+
+  <!-- 額外內容滿版區段 -->
+  <div class="extra-section" id="extra-creator">
+    <div class="extra-content-container">
+      <div class="extra-text-area">
+        <h3 class="extra-title">創生神</h3>
+        <p class="extra-desc">請輸入創生神的相關說明…</p>
+      </div>
+      <div class="extra-image-area">
+        <img src="./images/chuangshengshen.png" alt="創生神" class="lozad" data-src="./images/chuangshengshen.png"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- 地理故事區段：文字置中 -->
+  <div class="extra-section" id="extra-geolore">
+    <div class="extra-content centered">
+      <h3 class="extra-title">地理故事</h3>
+      <p class="extra-desc">請輸入地理故事的內容…</p>
+    </div>
+  </div>
+
+  <div class="extra-section" id="extra-astror">
+    <div class="extra-content-container">
+      <div class="extra-text-area">
+        <h3 class="extra-title">天文英雄</h3>
+        <p class="extra-desc">請輸入天文英雄的相關說明…</p>
+      </div>
+      <div class="extra-image-area">
+        <img src="./images/tianwenyingxiong.png" alt="天文英雄" class="lozad" data-src="./images/tianwenyingxiong.png"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="extra-section" id="extra-transformer">
+    <div class="extra-content-container">
+      <div class="extra-text-area">
+        <h3 class="extra-title">變形英雄</h3>
+        <p class="extra-desc">請輸入變形英雄的相關說明…</p>
+      </div>
+      <div class="extra-image-area">
+        <img src="./images/bianxingyingxiong.png" alt="變形英雄" class="lozad" data-src="./images/bianxingyingxiong.png"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- 部落信條區段：文字置中 -->
+  <div class="extra-section" id="extra-credo">
+    <div class="extra-content centered">
+      <h3 class="extra-title">部落信條</h3>
+      <p class="extra-desc">請輸入部落信條的內容…</p>
+    </div>
+  </div>
+
+    <!-- 期末視覺小說連結區塊範本 -->
+  <div class="visual-novel-section" id="visualNovelSection">
+  <h2 class="vn-title">期末視覺小說</h2>
+  
+  <!-- 章節一 -->
+  <div class="vn-chapter">
+    <h3 class="vn-subtitle">序章：起源之章</h3>
+    <p class="vn-quote">「在那遙遠的記憶深處，一切故事的開端...」</p>
+    <div class="vn-buttons">
+      <a href="#" class="vn-btn">進入序章</a>
+    </div>
+  </div>
+
+  <!-- 章節二 -->
+  <div class="vn-chapter">
+    <h3 class="vn-subtitle">中章：發展之章</h3>
+    <p class="vn-quote">「命運的齒輪開始轉動，一切即將改變...」</p>
+    <div class="vn-buttons">
+      <a href="#" class="vn-btn">進入中章</a>
+    </div>
+  </div>
+
+  <!-- 章節三 -->
+  <div class="vn-chapter">
+    <h3 class="vn-subtitle">終章：結局之章</h3>
+    <p class="vn-quote">「最終的抉擇，將決定一切...」</p>
+    <div class="vn-buttons">
+      <a href="#" class="vn-btn">進入終章</a>
+    </div>
+  </div>
+</div>
+
+  <!-- 四大任務卡區塊 -->
+  <div class="missions-section" id="missionsSection">
+    <h2 class="missions-title">四大任務卡</h2> <!-- 新增標題 -->
+    <div class="missions-bg"></div>
+    <div class="missions-gradient"></div>
+    <div class="missions-cards-row">
+      <div class="mission-card" data-index="0">
+        <img src="./images/mission1.png" alt="思辨之風" class="lozad" data-src="./images/mission1.png">
+      </div>
+      <div class="mission-card" data-index="1">
+        <img src="./images/mission2.png" alt="創世之夜" class="lozad" data-src="./images/mission2.png">
+      </div>
+      <div class="mission-card" data-index="2">
+        <img src="./images/mission3.png" alt="重構之織" class="lozad" data-src="./images/mission3.png">
+      </div>
+      <div class="mission-card" data-index="3">
+        <img src="./images/mission4.png" alt="播種之旅" class="lozad" data-src="./images/mission4.png">
+      </div>
+    </div>
+    <div class="missions-desc-dialog" id="missionsDesc">
+      <div class="missions-desc-title"></div>
+      <div class="missions-desc-content">將滑鼠移到上方卡片，顯示任務說明。</div>
+    </div>
+  </div>
+
+
+
+  <script>
+    // 滑動（或觸控上滑）進入 hero-wrap，只觸發一次
+    let scrolled = false;
+
+    function scrollToHero() {
+      // 只在封面區塊可見時觸發
+      const fullscreenHeader = document.getElementById('fullscreenHeader');
+      const rect = fullscreenHeader.getBoundingClientRect();
+      // 頁面頂端且封面可見才觸發
+      if (rect.top >= 0 && rect.bottom > 100) {
+        if (!scrolled) {
+          document.getElementById('heroSection').scrollIntoView({ behavior: 'smooth' });
+          scrolled = true;
+          window.removeEventListener('wheel', wheelHandler, { passive: false });
+          window.removeEventListener('touchmove', touchHandler, { passive: false });
+        }
+      }
+    }
+
+    function wheelHandler(e) {
+      scrollToHero();
+    }
+
+    function touchHandler(e) {
+      scrollToHero();
+    }
+
+    window.addEventListener('wheel', wheelHandler, { passive: false });
+    window.addEventListener('touchmove', touchHandler, { passive: false });
+
+    // 部落資料
+    const tribes = [
+      {
+        name: "玄蜂部落",
+        subtitle: "Xuan-Feng Tribe",
+        hero: "./images/xuanfeng.png",
+        blur: "./images/xuanfeng-blur.jpg",
+        descTitle: "部落簡述",
+        descContent: `很久以前，玄峰部落的祖先們原先居住在平地，他們只會治療且生性平和，因此長期遭受其他部落的攻擊，不得不一直遷移。
+        後來，在一隻超巨型靈蜂的帶領下，祖先們到達了現在玄峰部落的所在地。 
+        祖先們在此定居後，超巨型靈蜂帶領大小蜜蜂們協助開拓新家園。為了感謝超巨型靈蜂，他們在部落出口建造了一座靈蜂石像。
+        每年春天，部落成員會在臉上畫上蜜蜂，並帶著鮮花和祭品到石像前感謝。`,
+        reportUrl: "#",
+        extraCreatorTitle: "創生神",
+        extraCreatorDesc: `玄峰部落的祖先們原先住在平地，因長期被周遭部落攻擊，死傷慘重，不得不遷移。後來阿木爾·洛桑的誕生改變了部落。
+        阿木爾這個姓氏代表和平、安逸。阿木爾·洛桑原本是玄峰部落的孤兒，一次被靈峰叮咬額頭後，他突然擁有了治癒他人的神力，並將這份神力傳給了玄峰部落的子子孫孫。
+        為了祭祀他無私的精神，部落裡建了一間神廟。`,
+        extraCreatorImage: "./images/Xuan-Feng_creator.png",
+        extraGeoloreTitle: "地理故事",
+        extraGeoloreDesc: `玄峰部落位於群山環繞的峭壁之間，依附著懸崖洞穴與山壁平台而建。
+        部落底部有茂密的森林，蜿蜒的河流自高處落下形成瀑布，提供水源。由於地勢險峻，外人難以輕易接近，使部落長期保持獨立与特色。
+        部落建築融合木製棧道、石穴與藤索橋，族人擅長攀爬，能輕盈地在懸崖間行動。
+        部落以飼養名為「玄蜂」的巨型靈蜂聞名，這些蜂能協助採集靈花蜜，並在戰鬥時成為戰士的戰騎或信使。
+        部落特有的靈花蜜能治癒一切創傷，增強體力，甚至帶來短暫的靈視能力。部落中的祭司能透過蜂巢的共鳴聲占卜未來，預測天象與吉凶。`,
+        extraAstrorTitle: "天文英雄 - 希瓦",
+        extraAstrorDesc: `很久以前，天上沒有太陽也沒有月亮，整個世界沉浸在靜止的灰色中。時間、季節和夢都不存在。太陽與月亮因爭吵躲在宇宙兩端，不願照耀大地。太陽自稱是萬物之光，能賜予生命；月亮則說自己柔和的銀光能守護夢與安寧。它們的爭吵使世界永遠陷入灰暗。
+        希瓦提出一個方法：太陽和月亮輪流照耀大地，如同舞蹈，一個先舞，另一個再回到天邊，讓另一個上場。這樣，大地便能在它們之間呼吸、成長、入眠、做夢。太陽與月亮最終答應了這場舞蹈。
+        從那天起，希瓦開始引導它們，踏出日升、日落、月出、月隱的節奏。日月就這樣隨他旋轉，交替不息。部落的長老說：每天的黃昏與黎明，其實就是希瓦在天空的腳步。為了紀念他，部落仰望天際，記錄星辰的位置，守護日月更替的節奏。因為只要希瓦還在天上行走，世界就不會失去方向。`,
+        extraAstrorImage: "./images/Xuan-Feng_astror.png", // 新增英雄圖片
+        extraTransformerTitle: "變形英雄",
+        extraTransformerDesc: `很久以前，世界邊緣的密林與懸崖交織之地，有一片從未被外人踏足的靜謐森林深處，藏著一個傳說中的部落——玄峰部落。這裡沒有高樓，沒有鋼鐵的都市，只有自然與生物交織而成的奇蹟。
+        玄峰部落的成員並非普通昆蟲，他們是自然之靈與古代機械文明融合的產物，擁有變形之力，每位族人都能轉化為各式形態。
+        與世人熟知的戰士部落不同，蜂巢部落存在的使命是為了治癒，而非征服或毀滅。
+        這個部落肩負著一項古老的誓約——守護世界的生命平衡。他們穿梭於山谷、河流之畔、焦土之上，復甦枯萎的大地、療癒受傷的靈魂，撫平文明留下的傷痕。他們相信，只要自然恢復呼吸，萬物就能重新找到自己的位置。
+        部落由一位睿智的領袖帶領，他就像一座移動的燈塔，引導族人前往每個需要幫助的地方。他身邊有負責建造與修復的工程師、溫柔守護大家的防衛者、擅長潛行與心靈治療的夜行醫者、飛行在高空提供支援的光翼偵察者以及沉默卻堅定、守住前線的重裝戰士。他們分工不同，性格各異，卻有著相同的信念——讓生命回到原本的樣子，讓世界再次呼吸。`,
+        extraTransformerImage: "./images/Xuan-Feng_transformer.png", // 新增英雄圖片
+        extraCredoTitle: "部落信條 - 誠實",
+        extraCredoDesc: `玄峰部落曾面臨大旱災，河水乾涸，土地龜裂，所有人為食物和水源發愁。
+        有一天，年輕獵人艾羅在山谷中發現一個秘密泉眼，水源豐沛，足供部落使用。但他沒有說出口，害怕泉水被分光，自己和家人沒得喝。
+        艾羅偷偷取水，家人身體漸漸康復，但其他人卻越來越虛弱。一位長老察覺異樣，跟蹤艾羅，發現了秘密。當眾對質時，艾羅低頭不語。
+        長老並未責備他，而是讓他站在火堆旁說出真相。他哽咽地承認一切，並向部落道歉。
+        族人沉默很久，最年長的巫女站出來說：我們不是因為你發現泉水而失望，而是因為你選擇隱瞞。若人人只顧自己，部落就會崩解。
+        後來，族人共同開闢一條小道，引泉水至村中。艾羅則親自守護水源，直到老去。他的誠實雖來得遲，但讓整個部落學會了一件事：唯有誠實，才能彼此信任、共度苦難。`,
+        visualNovel: {
+          chapter1: {
+            title: "事件一｜蜂巢記憶封印失控",
+            quote: "玄棘體內的記憶封印逐漸鬆動，引發靈場不穩，族人陷入失眠與混亂。祖靈預警：若不釋放創傷記憶，整個族群將失去靈性共鳴。",
+            url: "https://lyx123.my.canva.site/"
+          },
+          chapter2: {
+            title: "事件二｜靈花儀式暴走",
+            quote: "年度靈花儀式失控，花靈吞噬靈氣導致靈媒昏迷。巖隱與飛飛受命重啟儀式，必須在守護信仰與調和混亂中找回祖靈的節奏。",
+            url: "https://www.canva.com/design/DAGpjbrCnWY/EziImyg5Ot69ngugF8o8jQ/edit?utm_content=DAGpjbrCnWY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+          },
+          chapter3: {
+            title: " 事件三｜部落與外界接觸衝突",
+            quote: "外族提出靈花與蜂巢知識交換，引爆部落內部分歧。伊芙試圖談判共識，時嶺堅守祖靈精神，兩人夾在信仰與未來之間的夾縫中。",
+            url: "https://ccchhh66.my.canva.site/"
+          }
+          }
+      },
+      {
+        name: "弎餃山部落",
+        subtitle: "San-Jiao-Shan Tribe",
+        hero: "./images/sanjiao.png",
+        blur: "./images/sanjiao-blur.jpg",
+        descTitle: "部落簡述",
+        descContent: `餃山汕由六大分支部落組成。
+        醫電部落精通醫療與電子技術 。籃球部落象徵體能與戰鬥精神 。遊戲部落充滿創意與娛樂設計 。
+        自控部落掌控邏輯與自動化技術 。休閒部落傳遞平靜與放鬆的能量 。單純部落是純真與初心的守護者 。
+        於水餃宇宙之聖域（124.33.37），創世神水餃奶奶正以湯汁聖鍋烹製宇宙之餃 。
+        一日，奶奶不慎，桌上之水餃滑落，墜地化為星塵，滾入混沌星雲，遂生式餃汕樂土 。
+        混沌魔湯欲侵此地，奶奶以湯汁幻影創守護者波流，賜四形之力，傳神諭：「多元共生，餃結一心。」  
+        眾部落聯手，驅魔湯，聖地復輝 。水餃之皮化湯汁河流，餡料散為蔥花山脈，孕育六大部落：
+        醫電掌癒術，籃球舞星辰，遊戲織智網，自控守秩序，休閒奏天籟，單純護聖光 。
+        六部落各安其命，醫電以湯汁療傷，籃球於蔥花場爭榮，遊戲設試煉，自控穩河流，休閒以樂安魂，單純祈聖光永存。
+        每逢湯汁之節，眾聚聖地，獻技藝，波流化湯餃，賜溫暖湯汁，聯結眾心。
+        傳說湯汁河清，聖地耀，或餃汕永昌，眾餃以神諭為志，守護此宇宙之珍土 。`,
+        reportUrl: "#",
+        extraCreatorTitle: "創生神",
+        extraCreatorDesc: `創生神是水餃奶奶 。她包餃時不慎掉落一顆水餃，該餃子化為宇宙，成為式餃汕起源 。她是慈祥的創世者，擁有神秘廚藝與智慧 。
+        咒語是「速速速~舒波Nobar」。
+        水餃宇宙之聖域 (124.33.37) 是創世神水餃奶奶以湯汁聖鍋烹製宇宙之餃的地方 。一日，奶奶不慎，桌上之水餃滑落，墜地化為星塵，滾入混沌星雲，遂生式餃汕樂土。`,
+        extraCreatorImage: "./images/sanjiao_creator.png",
+        extraGeoloreTitle: "地理故事",
+        extraGeoloreDesc: `座標位置在水餃宇宙。距離地球約124光年，與地球有38秒的時差 。
+        地形是蔥花山脈，星球上的山脈由大片蔥花組成，層層交疊。
+        星空是玉米星座，夜空中星座是由一顆顆金黃色玉米粒組成。
+        水域是神湯海，大地上的主要水域是煮水餃後留下的清湯，色澤清亮，帶著蔥油香氣 。
+        水餃之皮化為湯汁河流，餡料散為蔥花山脈，孕育六大部落：
+        醫電掌癒術，籃球舞星辰，遊戲織智網，自控守秩序，休閒以樂安魂，單純護聖光 。`,
+        extraAstrorTitle: "天文英雄",
+        extraAstrorDesc: `英雄是蒸星翔者・咕魯咕魯，外號餃之羅盤。
+        他是來自水餃宇宙的天文英雄，駕駛蒸籠艦「浮雲號」在星海中漫遊，收集散落宇宙的餃餡能量 。
+        他擁有稀有天賦，能辨識星空與餃子的完美熟度，總能在混亂中找到方向 。`,
+        extraAstrorImage: "./images/sanjiao_astror.png",
+        extraTransformerTitle: "變形英雄",
+        extraTransformerDesc: `英雄是餃靈變霸丸。
+        他擁有四種餃型：
+        煎餃（高攻擊力）、蒸餃（高防禦）、湯餃（支援型）、炸餃（爆發力強）。
+        變形咒語是「餃變!速速速~舒波Nobar!」。`,
+        extraTransformerImage: "./images/sanjiao_transformer.png",
+        extraCredoTitle: "部落信條",
+        extraCredoDesc: `式餃汕因水餃奈米之恩而生，因六部落之志而盛 。
+        聖規為約，湯汁為證，餃眾當同心守護，抵禦混沌，讓聖地之光永耀餃子水宇宙 。
+                        混沌魔湯欲侵此地，奶奶以湯汁幻影創守護者波流，賜四形之力，傳神諭：「多元共生，餃結一心。」  眾部落聯手，驅魔湯，聖地復輝 。
+                        六部落各安其命，醫電以湯汁療傷，籃球於蔥花場爭榮，遊戲設試煉，自控穩河流，休閒以樂安魂，單純祈聖光永存 。
+                        每逢湯汁之節，眾聚聖地，獻技藝，波流化湯餃，賜溫暖湯汁，聯結眾心 。
+                        傳說湯汁河清，聖地耀，或餃汕永昌，眾餃以神諭為志，守護此宇宙之珍土 。
+                        尊重餃子，它是宇宙起源 。團結融合，如餃餡般多元 。不浪費餃子，每顆都是神意 。
+                        每年參加冬至『下鍋儀式』、夏季『湯汁之節盛典』 。每族必會咒語:速速速~舒波Nobar 。`,
+        visualNovel: {
+        chapter1: {
+        title: "事件一｜混沌湯潮再現！星餃重煉儀式",
+        quote: "神湯海異變，混沌魔湯甦醒，湯汁濁亂威脅整個星域。部落需透過星圖觀測、幻影召喚或模擬封印鍋等手段，重煉星餃以鎮壓災源。",
+        url: "https://chapter1-link.comhttps://www.canva.com/design/DAGps0QvO1w/b_xY9i9sgLObBIIat-IuUg/edit?utm_content=DAGps0QvO1w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        },
+        chapter2: {
+          title: "事件二｜六族餃魂選拔試煉",
+          quote: "六位象徵之子將承接餃魂神力，卻於儀式中遭遇碎片失控與能力異變。部落需在融合、封印或尋根中抉擇，重建信念與傳承。",
+          url: "https://chapter2-link.cohttps://www.canva.com/design/DAGpjf3F3Gk/ZSiudZ0LYYOH7p2dYSXHhw/view?utm_content=DAGpjf3F3Gk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h095b573335"
+        },
+        chapter3: {
+          title: "事件三｜蔥河湯紛之夜",
+          quote: "蔥河神靈震怒引發湯潮暴漲，部落面臨三日內安撫神靈的壓力。和平使者阿木瓜與阿瓦逹啃大瓜啟程，面對儀式代價與命運對話。",
+          url: "https://www.canva.com/design/DAGpjf3F3Gk/ZSiudZ0LYYOH7p2dYSXHhw/view?utm_content=DAGpjf3F3Gk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h095b573335"
+        }
+      }
+      },
+      {
+        name: "金靈部落",
+        subtitle: "Jin-Ling Tribe",
+        hero: "./images/jinling.png",
+        blur: "./images/jinling-blur.jpg",
+        descTitle: "部落簡述",
+        descContent: `在異世界第七脈動，第十三氣泡墜落點因貪婪導致金錢容易累積，但因人數眾多而常會缺乏金錢，因此得名 。
+        在創生神的滋養下孕育出五族，在追求平衡的創生神下誕生了數位守護神，發展至現代留存了祂們的傳奇故事。
+        金零部落的咒語是「薩婆薩婆，摩囉摩囉」，意思是讚揚他們的神祇「薩婆」 。`,
+        reportUrl: "#",
+        extraCreatorTitle: "創生神：老木與它創造世界的故事",
+        extraCreatorDesc: `在無盡的虛空中，星靈維度尚未成型，只有混沌的氣泡 。
+        某日，一顆巨大的氣泡墜落，裂開時誕生了老木 。
+        老木誕生時，感受到虛空的孤寂，於是低語道：
+        「我將創造一個世界，讓生命在此共鳴」
+        他的低語化為五界與殞星之隙的起源 。
+        老木用自己的樹脈孕育了五種元素——水與霧、火、木、水、沙，並將這些元素散播到虛空中，形成了五界 。
+        老木的創造並未止於此，他將自己樹心深處的萬物之靈化為五界的哥布林種族：
+        木語者 (Woodwhisperers)、燼哥布 (Ember Gobs)、林哥布 (Verdant Gobs)、霜哥布 (Frost Gobs)、殞哥布 (Fallen Gobs)。
+        這些哥布林崇拜老木，視他為創生之神，並在五界中繁衍生息 。然而，老木的創造並非完美，它們試圖吞噬五界元素，破壞老木的創造 。老木感受到這股威脅，低語道：
+        「我需要守護者，來保護我的世界」
+        於是他開始孕育英雄。`,
+        extraCreatorImage: "./images/jinling_creator.png",
+        extraGeoloreTitle: "地理故事",
+        extraGeoloreDesc: `金零部落的星脈座標是第七脈動，第十三氣泡墜落點 。地理環境包括：
+        霧野之地 (Mistmoor) – 水與霧之地，氣泡殞地晶體閃爍 ；
+        燼石高地 (Emberstone Heights) – 火焰之地，熔岩流淌，烈焰永燃 ；
+        蒼林深淵 (Verdant Abyss) – 木之領域，藤蔓交織，樹靈低語 ；
+        星淞海 (Froststar Sea) – 冰之海洋，冰霜覆蓋，寒光刺眼 ；
+        殞地荒原 (Fallen Wastes) – 沙之荒漠，細沙流動、殞星碎片散落 。`,
+        extraAstrorTitle: "天文英雄：阿明",
+        extraAstrorDesc: `阿明從星靈之泉中誕生，身體由星辰光芒組成，頭上有一對閃爍的星角 。他是老木創造的第一位守護者，被賦予調節五界元素與日夜運轉的使命 。阿明感知到老木樹脈的傷痕，發覺殞星之隙中的星靈殞影正侵蝕五界元素 。
+        他決定進入殞星之隙尋找解決之道，並與星靈殞影展開激戰 。
+        阿明以星辰之力驅散殞影，提取殞星樹 (Fallen Star Tree) 中的氣泡，將其融入星靈之泉，強化五界元素循環 。
+        他同時調節日夜交替，減輕老木的負擔，使五界暫時恢復平衡 。
+        然而，他在殞星隙中預見元素失衡的未來，低語道：「五界需要另一位英雄，來治癒老木的傷痕，平衡元素的深層力量」 。`,
+        extraAstrorImage: "./images/jinling_astror.png",
+        extraTransformerTitle: "變形英雄：薩婆",
+        extraTransformerDesc: `薩婆誕生於星靈之泉，天賦異稟，能聆聽老木低語、感知五界元素共鳴 。他矮小瘦削、皮膚蒼白如霧，並帶有五彩微光；眼中閃爍沼澤般的磷火，綠中透藍 。木語者稱他為「元素低語者」，因他能與五界元素直接對話 。薩婆發現老木樹脈傷痕日深、萬物之靈流動幾近停滯 。
+        他進入老木樹心，幻化為元素魚——一條三尺長的透明之魚：頭圍霧氣、背燃火焰、鰭如翠綠樹葉、尾覆冰霜，魚鱗中滲出細沙 。
+        薩婆運用霧、火、木、冰、沙五界元素修補老木傷痕，使五界之心重獲生機 。他後來深入殞星之隙，與星靈殞影展開對抗，最終將殞星之隙秘密記錄，警示五界哥布林共同守護老木 。`,
+        extraTransformerImage: "./images/jinling_transformer.png",
+        extraCredoTitle: "部落信條",
+        extraCredoDesc: `金聚而強，族合而盛；孤行者無名，合族者萬世留名 。
+        吾等由異界而來，包裹於泡，墜於土，根源不忘 ；貪為天性，但不許無義之奪 。`,
+        visualNovel: {
+          chapter1: {
+        title: "事件一｜靜語裂隙",
+        quote: "五界之心出現裂隙，回響未來碎語。偷叨獨自潛入霧中迷路，面對映照命運、自我消散與星靈融合的抉擇，守住真相或改寫未來。",
+        url: "https://www.canva.com/design/DAGqJqLHxbM/g5eVmRr623rpm2cRCdvqSg/view?utm_content=DAGqJqLHxbM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0d53e42bad"
+      },
+      chapter2: {
+        title: "事件二｜火沙遺鳴",
+        quote: "燼石高地爆炸，英靈現身。宰寄欲焚滅過往，漁悼欲傾聽真相，兩人於火與沙之間爭論信仰與記憶的價值，引爆族群的精神危機。",
+        url: "https://www.canva.com/design/DAGpjnlt7T0/0vakiPSggogP5pU-uwX2gg/edit?utm_content=DAGpjnlt7T0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+      },
+      chapter3: {
+        title: "事件三｜星夢守衡",
+        quote: "五界星辰失衡，夢境與星圖碎裂。衣衣探夢，岳飛觀星，合力修補星之節律。記憶、預言與星靈泉交織，試煉秩序與情感的平衡。",
+        url: "https://www.canva.com/design/DAGpr0ssDGY/cea9IWFJ6ZBbiyYBGQsKUg/edit?utm_content=DAGpr0ssDGY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+      }
+      }
+      },
+      {
+        name: "一坨大的部落",
+        subtitle: "Yi-Tuo-Da Tribe",
+        hero: "./images/yituo.png",
+        blur: "./images/yituo-blur.jpg",
+        descTitle: "部落簡述",
+        descContent: `在遙遠的過去，大地還沒有被清晰地劃分為山川、平原、河流，而是一片漂浮的迷霧之地。
+        某天，一個巨大的光球突然從天而降，砸進迷霧森林的中心，形成了一個圓圓軟軟、會微微跳動的神秘巨團。
+        這個巨團無法被定義，有些人說是天神遺落的食物，有些人說是月亮睡覺時掉下的枕頭。
+        因為它太大且無法理解，先民決定用最誠實具體的方式命名它——「一坨大的」 。`,
+        reportUrl: "#",
+        extraCreatorTitle: "創生神",
+        extraCreatorDesc: `創造那個神秘巨團的神明是「姆姆」。
+        他的個性懶散愛玩，是一個會把山折成紙鶴、把雲揉成棉花糖的淘氣之神。據說他在一場創世派對上玩得太開心，將許多未完成的創世作品丟下凡間。「一坨大的」部落就是建立在這些創作的殘骸上。
+        因此，部落相信每個人都有一塊「混亂但充滿潛力」的靈魂碎片，只要用心雕琢，就可以成為最獨特的存在 。`,
+        extraCreatorImage: "./images/yituo_creator.png",
+        extraGeoloreTitle: "地理故事",
+        extraGeoloreDesc: `據說「一坨大的」部落所在的土地，原先是座漂浮的空島，漫無目的地被雲霧拖著在天空上漂浮著。
+        直到某天，姆姆之神從天上丟下一團創作碎片，重重地砸向這座空島，使整座島失去平衡，便像氣球洩氣一樣摔到地面，撞出了一座圓形的山丘，也就是現在的「霧丘」。
+        霧丘的核心是那團神秘巨團「一坨核心」，是整座部落的生命泉源 。核心會根據人們的思想產生地形變化。
+        有一年，整個村莊都在吵架，霧丘就變成一座有回音的深谷，怎麼吵都只會聽到自己的聲音。
+        但當大家同心協力一起種樹，霧丘就會長出滿山的銀葉林，葉子能反射星光照亮整片夜空。
+        「霧丘教會我們：世界長什麼樣，不是由我們看見什麼決定，而是由我們相信什麼決定」 。`,
+        extraAstrorTitle: "天文英雄",
+        extraAstrorDesc: `傳說部落裡有個怕黑的小孩，總覺得夜晚什麼都沒有。
+        直到他獨自跌入「靜光坑」——傳說中星星墜落的地方。他在黑暗中睜開了眼，第一次看見「不是太陽照出來的光」，而是恆星的碎片。
+        只有真正能與黑夜共處的人才會被選中以及看見 。回到部落後，他不再怕黑，開始觀星，預測霧變與災象，成為部落的星語者。「勇氣並非趕走黑暗，而是學會在黑暗中點亮自己」。`,
+        extraAstrorImage: "./images/yituo_astror.png",
+        extraTransformerTitle: "變形英雄",
+        extraTransformerDesc: `「霧森」是霧養大的孩子，沒有固定的樣子。能變成各種不同形體，人、獸、風，甚至化作別人的影子。
+        他一直不知道自己是誰，直到某天他模仿了一位傷心的老人，老人的眼淚讓他第一次感受到痛 。從此他不再只是模仿，而是選擇成為每個人需要的樣子，也找到了真正的「自己」。
+        「身份不是你是誰，而是你選擇成為誰」 。`,
+        extraTransformerImage: "./images/yituo_transformer.png", // 新增英雄圖片
+        extraCredoTitle: "部落信條",
+        extraCredoDesc: `部落信條是「混亂及可能，無解及創造」。
+        很久以前，部落裡有一位工匠叫做力波，他是全村最會雕刻的人，但也最在意「完美」。因此他只想雕刻光滑、毫無裂痕的完美石頭。
+        這種石頭非常難找，所以一天天過去，他什麼也沒做出來 。某天，一塊又裂又歪、表面全是坑洞的怪石滾進部落。
+        正當大家想著怎麼處理這塊石頭時，創世神姆姆卻出現了，並告訴力波：「你尋找的是『完美』，但創造從不是找出打暗，而是和混亂共舞」。
+        於是力波半信半疑地用那塊怪石雕刻，沒想到裂痕變成了河流，凹凸不平的坑洞變成了星星。
+        他最後做出了部落裡最受歡迎的作品，象徵著每個人都來自混沌，卻能創造出光芒 。`,
+      },
+      {
+        name: "噬界族部落",
+        subtitle: "Shi-Jie Tribe",
+        hero: "./images/shijie.png",
+        blur: "./images/shijie-blur.jpg",
+        descTitle: "部落簡述",
+        descContent: `無盡歲月之前，噬界族的創生神在與神的戰鬥中被打碎了一部分。
+        噬界族從那部分身體碎片中誕生 。自誕生以來，他們便遵循本能去吞噬萬物。
+        起初是生靈，但隨著進食欲望的膨脹，就連無生命之物也成為了他們的口糧。
+        最終只要是能吞下的，他們都會嚐上一口。無論何時何地，只要有東西能吃，就有他們的身影。「生而為食，噬為榮耀」是噬界族的隊呼。`,
+        reportUrl: "#",
+        extraCreatorTitle: "創生神",
+        extraCreatorDesc: `在深邃的宇宙盡頭，有一個獨特的黑洞忽然誕生了意識。自此它開始有目的地吞噬龐大的星球，每一次吞噬都使它更加巨大且強悍。
+        然而這無止境的吞噬終究觸犯了其他神明的利益，最終引發了一場史詩級的大戰。
+        在戰場上，各路神明大顯神通，輪番對噬界族的神發起攻擊，但這些看似華麗的招式，卻難以撼動噬界族的神絲毫，反而一個個被牠吞噬殆盡。
+        即使在眾神的圍攻下，噬界族的神也僅僅失去了一部分身軀，而這也只需再吞噬幾顆星球，牠便恢復如初，依然屹立不搖 。噬界族的神就是如此強大 ！`,
+        extraCreatorImage: "./images/shijie_creator.png", // 新增生神圖片
+        extraGeoloreTitle: "地理故事",
+        extraGeoloreDesc: `由於誕生自黑洞神明的碎片，噬界族並不需要依賴氧氣來生存。其本身帶有引力的性質，也使得重力環境對他們而言毫無必要。
+        因此他們能在宇宙中自由穿行，從一顆星球吞噬至另一顆星球 。為了更高效率地穿越星海，噬界族發展出了名為「噬界艦」的航空工具。
+        這是一種仿生於創生神、以黑洞為基礎所打造的艦體，能夠如登山者一般，將空間視為繩索般攀行穿梭，大幅提升移動速度與精準度。
+        在航行過程中，噬界艦還會吞噬周圍的小行星與太空碎屑，作為能量補給與族群的食物來源。
+        族中真正強大的存在甚至僅憑肉身便能在宇宙中穿梭，以純粹的本能吞噬萬物，不需任何工具 。`,
+        extraAstrorTitle: "天文英雄",
+        extraAstrorDesc: `在噬界族的傳說中，先祖從未真正死去。當他們的肉體走向終結，其靈魂便會昇華，化為宇宙深處如同創生神般存在。
+        雖然不再擁有形體，卻仍以吞噬為本能，而在星海中靜靜漂泊 。他們會潛伏於星辰之間，等待下一次獵食。
+        因此噬界族內流傳著這樣一句話：「若你仰望夜空，忽見星辰消逝，那不是恆星的熄滅，而是我們的先祖，正在進食」。
+        「一切都將消亡，無論星辰、萬象，終將沉寂於虛無；唯吾族，源自深淵，將永存」。`,
+        extraAstrorImage: "./images/shijie_astror.png", // 新增英雄圖片
+        extraTransformerTitle: "變形英雄",
+        extraTransformerDesc: `在遠古時期，噬界族尚未強盛，僅能在單一星球中覓食，以至於發展十分緩慢。而當時一位與眾不同的族人誕生了，他身形龐大如山脈，自身所蘊藏強烈的引力，甚至能夠扭曲周遭的空間。
+        他還擁有吞噬萬物的力量，更擁有超越常人的智慧與遠見。他就是噬界族的第一任族長，在他的帶領下打造出第一艘「噬界艦」，並擁有跨越星辰的能力。
+        現在即便最弱小的族人，也能離開母星、踏入宇宙、去吞噬更遙遠的星球 。死後更是化為有著無數觸手可以直接捕食的巨大黑洞。
+        傳說他仍在虛空深處守護著噬界族，吞噬一切試圖阻擋噬界族繁榮的存在。「讓最渺小的族人，也能吞噬最遙遠的星辰」。`,
+        extraTransformerImage: "./images/shijie_transformer.png", // 新增英雄圖片
+        extraCredoTitle: "部落信條-義",
+        extraCredoDesc: `在噬界族部落裡，雖然吞噬是本能 ，但族人之間若仍會互助、協力製作噬界艦、以幫助弱小族人生存，這種以族群為重、不計個體得失的精神，較符合「義」的本質。`,
+        visualNovel: {
+          chapter1: {
+          title: "事件一｜吞世的種子",
+          quote: "噬落受命吞噬星核，噬影奉令監視異變。他們在星獸、神性與命令間撕裂選擇，決定吞噬是否是宿命，或是進化的起點。",
+          url: "https://www.canva.com/design/DAGpjsa-5oM/cI8WL8LwM2MPgEpxosOvaw/edit?utm_content=DAGpjsa-5oM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        },
+        chapter2: {
+          title: "事件二｜噬艦的回音",
+          quote: "噬界族大長老赫‧納古爾與四長老奈赫斯分歧漸深，一為秩序守望，一為共生探索。兩人抉擇將改寫裂渦邊界的命運與族群未來。",
+          url: "https://www.canva.com/design/DAGpjsa-5oM/cI8WL8LwM2MPgEpxosOvaw/edit?utm_content=DAGpjsa-5oM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+        },
+        chapter3: {
+        title: "事件三｜《噬界殘魂錄》",
+        quote: "幽靈長老潛入裂界禁地，追尋幽瘋孽花真相，面對信任與背叛、生與犧牲的抉擇。裂隙低語不止，族運與靈魂的終章即將揭曉。",
+        url: "https://g.co/gemini/share/03730c96672a"
+      } 
+      }
+      }
+    ];
+
+    let current = 0;
+    const heroBg = document.getElementById('heroBg');
+    const heroGradient = document.getElementById('heroGradient');
+    const heroImg = document.getElementById('heroImg');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSubtitle = document.getElementById('heroSubtitle');
+    const descTitle = document.getElementById('descTitle');
+    const descContent = document.getElementById('descContent');
+    const toReportBtn = document.getElementById('toReportBtn');
+    const footerNav = document.getElementById('footerNav');
+
+    // 更新部落資訊
+    function updateTribeInfo(tribe) {
+      heroBg.style.backgroundImage = `url('${tribe.blur}')`;
+      heroImg.src = tribe.hero;
+      heroImg.alt = tribe.name;
+      heroTitle.textContent = tribe.name;
+      heroSubtitle.textContent = tribe.subtitle;
+      descTitle.textContent = tribe.descTitle;
+      descContent.innerHTML = tribe.descContent;
+
+      // 更新各額外內容區段，若資料中有提供自訂圖片，則同步更新
+      updateExtraSection('extra-creator', tribe.extraCreatorTitle, tribe.extraCreatorDesc, tribe.extraCreatorImage);
+      updateExtraSection('extra-geolore', tribe.extraGeoloreTitle, tribe.extraGeoloreDesc, tribe.extraGeoloreImage);
+      updateExtraSection('extra-astror', tribe.extraAstrorTitle, tribe.extraAstrorDesc, tribe.extraAstrorImage);
+      updateExtraSection('extra-transformer', tribe.extraTransformerTitle, tribe.extraTransformerDesc, tribe.extraTransformerImage);
+      updateExtraSection('extra-credo', tribe.extraCredoTitle, tribe.extraCredoDesc); // 此處通常僅有文字
+
+      if (tribe.reportUrl && tribe.reportUrl !== "#") {
+        toReportBtn.style.display = '';
+        toReportBtn.onclick = () => {
+          console.log("[DEBUG] Report button clicked for tribe:", tribe.name);
+          window.open(tribe.reportUrl, "_blank");
+        };
+      } else {
+        toReportBtn.style.display = 'none';
+      }
+    const vnSection = document.querySelector('.visual-novel-section');
+    if (tribe.visualNovel) {
+      // 如果部落資料有視覺小說，就顯示區塊並更新內容
+      vnSection.style.display = 'block';
+
+      const chapters = document.querySelectorAll('.vn-chapter');
+      // 更新章節標題
+      chapters[0].querySelector('.vn-subtitle').textContent = tribe.visualNovel.chapter1.title;
+      chapters[1].querySelector('.vn-subtitle').textContent = tribe.visualNovel.chapter2.title;
+      chapters[2].querySelector('.vn-subtitle').textContent = tribe.visualNovel.chapter3.title;
+
+      // 更新引言文字
+      chapters[0].querySelector('.vn-quote').textContent = tribe.visualNovel.chapter1.quote;
+      chapters[1].querySelector('.vn-quote').textContent = tribe.visualNovel.chapter2.quote;
+      chapters[2].querySelector('.vn-quote').textContent = tribe.visualNovel.chapter3.quote;
+
+      // 更新連結
+      chapters[0].querySelector('.vn-btn').href = tribe.visualNovel.chapter1.url;
+      chapters[1].querySelector('.vn-btn').href = tribe.visualNovel.chapter2.url;
+      chapters[2].querySelector('.vn-btn').href = tribe.visualNovel.chapter3.url;
+
+    } else {
+      // 如果沒有，就隱藏整個區塊
+      vnSection.style.display = 'none';
+    }
+    }
+
+    // 更新額外內容區段
+    function updateExtraSection(sectionId, title, desc, imageUrl) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const titleEl = section.querySelector('.extra-title');
+        const descEl = section.querySelector('.extra-desc');
+        if (title) titleEl.textContent = title;
+        if (desc) descEl.textContent = desc;
+        const imgEl = section.querySelector('.extra-image-area img');
+        if (imgEl && imageUrl) {
+          // 直接指定圖片，不做隨機抽取
+          imgEl.src = imageUrl;
+          imgEl.dataset.src = imageUrl;
+        }
+      }
+    }
+
+    // 顯示部落
+    function showTribe(idx) {
+      console.log("[DEBUG] showTribe called with idx:", idx);
+      const tribe = tribes[idx];
+      console.log("[DEBUG] Current tribe data:", tribe);
+      updateTribeInfo(tribe);
+      // 更新 Footer Nav
+      Array.from(footerNav.children).forEach((btn, i) => {
+        btn.classList.toggle('active', i === idx);
+      });
+    }
+
+    // 切換部落
+    function go(offset) {
+      console.log("[DEBUG] go called with offset:", offset);
+      current = (current + tribes.length + offset) % tribes.length;
+      console.log("[DEBUG] New current index:", current);
+      showTribe(current);
+    }
+
+    // 箭頭點擊事件
+    document.getElementById('prevArrow').onclick = () => {
+      console.log("[DEBUG] prevArrow clicked.");
+      go(-1);
+    };
+    document.getElementById('nextArrow').onclick = () => {
+      console.log("[DEBUG] nextArrow clicked.");
+      go(1);
+    };
+
+    // 創建 Footer Nav
+    function createFooterNav() {
+      tribes.forEach((tribe, idx) => {
+        const btn = document.createElement('button');
+        btn.textContent = tribe.name;
+        btn.onclick = () => {
+          current = idx;
+          showTribe(idx);
+        };
+        footerNav.appendChild(btn);
+      });
+    }
+
+    // 初始化
+    createFooterNav();
+    showTribe(current);
+
+    // Lozad.js
+    const observer = lozad();
+    observer.observe();
+
+    // 卡片資料
+    const missionsData = [
+      {
+        title: "思辨之風",
+        desc: "透過〈女媧〉、〈盤古〉等古典文本，挖掘討論議題<br>小組辯論：刑天是匹夫之勇還是知其不可為而為的英雄？<br>啟動部落敘事風格與思考方法",
+        bg: "./images/mission1-bg.jpg",
+      },
+      {
+        title: "創世之夜",
+        desc: "學生創建屬於部落的神、怪、傳說、建構世界邏輯。<br>問題探討：角色如何面對各種選擇？",
+        bg: "./images/mission2-bg.jpg",
+      },
+      {
+        title: "重構之織",
+        desc: "運用 ChatGPT 進行文本「重寫」練習<br>練習文本敘事節奏與分場邏輯",
+        bg: "./images/mission3-bg.jpg",
+      },
+      {
+        title: "播種之旅",
+        desc: "結合學生表演、配樂、動畫、Podcast 展演故事成果<br>每組以一種媒介重現其部落故事，進入「說出故事」與「傳播故事」階段",
+        bg: "./images/mission4-bg.jpg",
+      }
+    ];
+
+
+    const missionCards = document.querySelectorAll('.mission-card');
+    const missionsBg = document.querySelector('.missions-bg');
+    const missionsDescBox = document.getElementById('missionsDesc');
+    const missionDescTitle = missionsDescBox.querySelector('.missions-desc-title');
+    const missionDescContent = missionsDescBox.querySelector('.missions-desc-content');
+
+    
+    // 先取得 .missions-title 元素
+    const missionsMainTitle = document.querySelector('.missions-title');
+
+    missionCards.forEach((card, i) => {
+      card.addEventListener('mouseenter', () => {
+        console.log("[DEBUG] Mouse entered mission card index:", i);
+        missionDescTitle.textContent = missionsData[i].title;
+        missionDescContent.innerHTML = missionsData[i].desc;
+        setMissionsBg(i);
+        missionsMainTitle.textContent = missionsData[i].title;
+      });
+      card.addEventListener('mouseleave', () => {
+        console.log("[DEBUG] Mouse left mission card index:", i);
+        missionDescTitle.textContent = '';
+        missionDescContent.textContent = '將滑鼠移到上方卡片，顯示任務說明。';
+        // 延遲較長時間恢復預設背景 (例如 500ms)，並以 300ms 漸變
+        clearTimeout(missionBgTimeout);
+        missionBgTimeout = setTimeout(() => {
+          missionsBg.style.transition = "opacity 300ms ease-in-out";
+          missionsBg.style.opacity = 0;
+          setTimeout(() => {
+            missionsBg.style.backgroundImage = "url('./images/storytelling-bg.jpg')";
+            missionsBg.style.opacity = 1;
+            currentBgIndex = -1;
+          }, 300);
+        }, 500);
+        missionsMainTitle.textContent = "四大任務卡";
+      });
+    });
+
+    let currentBgIndex = -1;
+    let missionBgTimeout;
+    // 修正 setMissionsBg，使用預載圖片並延長淡入淡出時間
+    function setMissionsBg(index) {
+      if (index === currentBgIndex && missionsBg.style.opacity === "1") return;
+      clearTimeout(missionBgTimeout);
+      currentBgIndex = index;
+      const cardImgElem = missionCards[index].querySelector('img');
+      const cardImgSrc = cardImgElem.dataset.src || cardImgElem.src;
+      
+      const preloadImg = new Image();
+      preloadImg.src = cardImgSrc;
+      preloadImg.onload = () => {
+        if (currentBgIndex !== index) return;
+        missionsBg.style.transition = "opacity 300ms ease-in-out";
+        missionsBg.style.opacity = 0;
+        setTimeout(() => {
+          if (currentBgIndex !== index) return;
+          missionsBg.style.backgroundImage = `url('${cardImgSrc}')`;
+          missionsBg.style.opacity = 1;
+        }, 300);
+      };
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // 設定預設背景圖片（storytelling-bg.jpg 路徑請確認正確）
+      missionsBg.style.backgroundImage = "url('./images/storytelling-bg.jpg')";
+      missionsBg.style.backgroundColor = "#000";
+      missionsBg.style.opacity = 1;
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="footer-content">
+      <span>© 2025 五大部落成果發表｜指導老師：駱育萱　製作團隊：藍天襄</span><br>
+      <span>聯絡信箱｜<a href="mailto:birdy0423@gmail.com">birdy0423@gmail.com</a></span><br>
+      <span>連絡電話｜0931718851</span>
+    </div>
+  </footer>
+</body>
+</html>
