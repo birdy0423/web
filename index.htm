@@ -1380,6 +1380,15 @@
   }
 
 }
+
+    /* 在移動裝置上，讓特定描述文字不分段，呈現為連續段落 */
+    @media (max-width: 768px) {
+      #descContent,
+      #extra-geolore .extra-desc,
+      #extra-credo .extra-desc {
+        white-space: normal !important;
+      }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 </head>
