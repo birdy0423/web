@@ -172,6 +172,98 @@
 
 
 
+    /* 基礎響應式設定 */
+@media (max-width: 1200px) {
+  .container {
+    width: 95%;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .missions-cards-row {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .desc-content {
+    padding: 0 20px;
+  }
+  
+  .missions-cards-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mission-card {
+    width: 85vw;
+  }
+  
+  .extra-section {
+    padding: 40px 20px;
+  }
+  
+  .footer-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .footer-nav button {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .desc-title {
+    font-size: 1.3rem;
+  }
+  
+  .desc-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .mission-card {
+    width: 95vw;
+  }
+  
+  .nav-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .footer-nav button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* 設定 Viewport */
+@-ms-viewport {
+  width: device-width;
+}
+@viewport {
+  width: device-width;
+}
+
     .missions-section {
       position: relative;
       width: 100%;
@@ -688,6 +780,365 @@
         margin: 0 auto;
       }
     }
+
+    /* 翻卡基本樣式 */
+.flip-card {
+  width: 100%;
+  aspect-ratio: 2/3;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.flip-front {
+  background: #333;
+  color: #fff;
+}
+
+.flip-back {
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 卡片響應式設計 */
+@media (max-width: 768px) {
+  .flip-card {
+    width: 90vw;
+    margin: 10px auto;
+  }
+}
+
+/* 在 style 標籤內加入以下 CSS */
+@media (max-width: 768px) {
+  /* 手機版特殊區域容器樣式 */
+  .extra-content-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  /* 卡片容器樣式 */
+  .flip-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+  }
+
+  .flip-container.flipped {
+    transform: rotateY(180deg);
+  }
+
+  /* 卡片正反面共同樣式 */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+  }
+
+  .card-front {
+    background: #000;
+  }
+
+  .card-back {
+    background: rgba(0, 0, 0, 0.95);
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  .card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* 修正桌機版的三個特殊區域排版 */
+@media (min-width: 769px) {
+  /* 桌機版特殊區域容器樣式 */
+  #extra-creator .extra-content-container,
+  #extra-astror .extra-content-container,
+  #extra-transformer .extra-content-container {
+    display: flex;
+    align-items: center;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+
+  /* 文字區域樣式 */
+  #extra-creator .extra-text-area,
+  #extra-astror .extra-text-area,
+  #extra-transformer .extra-text-area {
+    width: 60%;
+    padding: 20px;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* 圖片區域樣式 */
+  #extra-creator .extra-image-area,
+  #extra-astror .extra-image-area,
+  #extra-transformer .extra-image-area {
+    width: 40%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 圖片樣式 */
+  #extra-creator .extra-image-area img,
+  #extra-astror .extra-image-area img,
+  #extra-transformer .extra-image-area img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
+  /* 標題樣式 */
+  #extra-creator .extra-title,
+  #extra-astror .extra-title,
+  #extra-transformer .extra-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  /* 內文樣式 */
+  #extra-creator .extra-desc,
+  #extra-astror .extra-desc,
+  #extra-transformer .extra-desc {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: left;
+    display: block !important; /* 確保桌機版顯示文字 */
+  }
+}
+
+@media (max-width: 768px) {
+  /* 隱藏原始文字內容 */
+  #extra-creator .extra-text-area,
+  #extra-astror .extra-text-area,
+  #extra-transformer .extra-text-area {
+    display: none;
+  }
+  
+  .extra-content-container {
+    flex-direction: column;
+    align-items: center; /* 確保容器內容置中 */
+  }
+
+  .extra-image-area {
+    width: 90vw !important; /* 縮小寬度並保持置中 */
+    margin: 0 auto !important;
+    aspect-ratio: 3/4;
+    perspective: 1000px;
+  }
+
+  /* 翻轉容器樣式 */
+  .flip-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+  }
+
+  .flip-container.flipped {
+    transform: rotateY(180deg);
+  }
+
+  /* 卡片正反面樣式 */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+  }
+
+  .card-front {
+    background: #000;
+  }
+
+  .card-back {
+    background: rgba(0, 0, 0, 0.95);
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* 內容水平置中 */
+    color: white;
+    text-align: center;
+  }
+
+  .card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center; /* 標題文字置中 */
+    width: 100%;
+  }
+
+  .card-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center; /* 內文文字置中 */
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  /* 圖片置中 */
+  .card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto;
+  }
+}
+
+/* 修正桌機版樣式 */
+@media (min-width: 769px) {
+  .extra-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+  }
+
+  .extra-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  /* 圖片與文字區塊配置 */
+  .extra-image-area {
+    width: 40%;
+  }
+
+  .extra-text-area {
+    width: 60%;
+    padding: 0 20px;
+  }
+
+  /* 確保卡片背面在桌機版不顯示 */
+  .card-back {
+    display: none;
+  }
+
+  /* 移除桌機版的翻轉效果 */
+  .flip-container {
+    transform: none !important;
+  }
+}
+
+/* 手機版樣式 */
+@media (max-width: 768px) {
+  /* 隱藏原始文字內容 */
+  #extra-creator .extra-text-area,
+  #extra-astror .extra-text-area,
+  #extra-transformer .extra-text-area {
+    display: none;
+  }
+  
+  .extra-content-container {
+    flex-direction: column;
+  }
+
+  .extra-image-area {
+    width: 100% !important;
+    margin: 0 !important;
+    aspect-ratio: 3/4;
+    perspective: 1000px;
+  }
+
+  /* 翻轉容器 */
+  .flip-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    cursor: pointer;
+  }
+
+  .flip-container.flipped {
+    transform: rotateY(180deg);
+  }
+
+  /* 卡片正反面 */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+  }
+
+  .card-back {
+    background: rgba(0, 0, 0, 0.95);
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+}
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 </head>
@@ -952,7 +1403,7 @@
             quote: "外族提出靈花與蜂巢知識交換，引爆部落內部分歧。伊芙試圖談判共識，時嶺堅守祖靈精神，兩人夾在信仰與未來之間的夾縫中。",
             url: "https://ccchhh66.my.canva.site/"
           }
-          }
+        }
       },
       {
         name: "弎餃山部落",
@@ -1005,22 +1456,22 @@
                         尊重餃子，它是宇宙起源 。團結融合，如餃餡般多元 。不浪費餃子，每顆都是神意 。
                         每年參加冬至『下鍋儀式』、夏季『湯汁之節盛典』 。每族必會咒語:速速速~舒波Nobar 。`,
         visualNovel: {
-        chapter1: {
-        title: "事件一｜混沌湯潮再現！星餃重煉儀式",
-        quote: "神湯海異變，混沌魔湯甦醒，湯汁濁亂威脅整個星域。部落需透過星圖觀測、幻影召喚或模擬封印鍋等手段，重煉星餃以鎮壓災源。",
-        url: "https://chapter1-link.comhttps://www.canva.com/design/DAGps0QvO1w/b_xY9i9sgLObBIIat-IuUg/edit?utm_content=DAGps0QvO1w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-        },
-        chapter2: {
-          title: "事件二｜六族餃魂選拔試煉",
-          quote: "六位象徵之子將承接餃魂神力，卻於儀式中遭遇碎片失控與能力異變。部落需在融合、封印或尋根中抉擇，重建信念與傳承。",
-          url: "https://chapter2-link.cohttps://www.canva.com/design/DAGpjf3F3Gk/ZSiudZ0LYYOH7p2dYSXHhw/view?utm_content=DAGpjf3F3Gk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h095b573335"
-        },
-        chapter3: {
-          title: "事件三｜蔥河湯紛之夜",
-          quote: "蔥河神靈震怒引發湯潮暴漲，部落面臨三日內安撫神靈的壓力。和平使者阿木瓜與阿瓦逹啃大瓜啟程，面對儀式代價與命運對話。",
-          url: "https://www.canva.com/design/DAGpjf3F3Gk/ZSiudZ0LYYOH7p2dYSXHhw/view?utm_content=DAGpjf3F3Gk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h095b573335"
+          chapter1: {
+            title: "事件一｜混沌湯潮再現！星餃重煉儀式",
+            quote: "神湯海異變，混沌魔湯甦醒，湯汁濁亂威脅整個星域。部落需透過星圖觀測、幻影召喚或模擬封印鍋等手段，重煉星餃以鎮壓災源。",
+            url: "https://chapter1-link.comhttps://www.canva.com/design/DAGps0QvO1w/b_xY9i9sgLObBIIat-IuUg/edit?utm_content=DAGps0QvO1w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+          },
+          chapter2: {
+            title: "事件二｜六族餃魂選拔試煉",
+            quote: "六位象徵之子將承接餃魂神力，卻於儀式中遭遇碎片失控與能力異變。部落需在融合、封印或尋根中抉擇，重建信念與傳承。",
+            url: "https://chapter2-link.cohttps://www.canva.com/design/DAGpjf3F3Gk/ZSiudZ0LYYOH7p2dYSXHhw/view?utm_content=DAGpjf3F3Gk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h095b573335"
+          },
+          chapter3: {
+            title: "事件三｜蔥河湯紛之夜",
+            quote: "蔥河神靈震怒引發湯潮暴漲，部落面臨三日內安撫神靈的壓力。和平使者阿木瓜與阿瓦逹啃大瓜啟程，面對儀式代價與命運對話。",
+            url: "https://www.canva.com/design/DAGpjf3F3Gk/ZSiudZ0LYYOH7p2dYSXHhw/view?utm_content=DAGpjf3F3Gk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h095b573335"
+          }
         }
-      }
       },
       {
         name: "金靈部落",
@@ -1069,21 +1520,21 @@
         吾等由異界而來，包裹於泡，墜於土，根源不忘 ；貪為天性，但不許無義之奪 。`,
         visualNovel: {
           chapter1: {
-        title: "事件一｜靜語裂隙",
-        quote: "五界之心出現裂隙，回響未來碎語。偷叨獨自潛入霧中迷路，面對映照命運、自我消散與星靈融合的抉擇，守住真相或改寫未來。",
-        url: "https://www.canva.com/design/DAGqJqLHxbM/g5eVmRr623rpm2cRCdvqSg/view?utm_content=DAGqJqLHxbM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0d53e42bad"
-      },
-      chapter2: {
-        title: "事件二｜火沙遺鳴",
-        quote: "燼石高地爆炸，英靈現身。宰寄欲焚滅過往，漁悼欲傾聽真相，兩人於火與沙之間爭論信仰與記憶的價值，引爆族群的精神危機。",
-        url: "https://www.canva.com/design/DAGpjnlt7T0/0vakiPSggogP5pU-uwX2gg/edit?utm_content=DAGpjnlt7T0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-      },
-      chapter3: {
-        title: "事件三｜星夢守衡",
-        quote: "五界星辰失衡，夢境與星圖碎裂。衣衣探夢，岳飛觀星，合力修補星之節律。記憶、預言與星靈泉交織，試煉秩序與情感的平衡。",
-        url: "https://www.canva.com/design/DAGpr0ssDGY/cea9IWFJ6ZBbiyYBGQsKUg/edit?utm_content=DAGpr0ssDGY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-      }
-      }
+            title: "事件一｜靜語裂隙",
+            quote: "五界之心出現裂隙，回響未來碎語。偷叨獨自潛入霧中迷路，面對映照命運、自我消散與星靈融合的抉擇，守住真相或改寫未來。",
+            url: "https://www.canva.com/design/DAGqJqLHxbM/g5eVmRr623rpm2cRCdvqSg/view?utm_content=DAGqJqLHxbM&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0d53e42bad"
+          },
+          chapter2: {
+            title: "事件二｜火沙遺鳴",
+            quote: "燼石高地爆炸，英靈現身。宰寄欲焚滅過往，漁悼欲傾聽真相，兩人於火與沙之間爭論信仰與記憶的價值，引爆族群的精神危機。",
+            url: "https://www.canva.com/design/DAGpjnlt7T0/0vakiPSggogP5pU-uwX2gg/edit?utm_content=DAGpjnlt7T0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+          },
+          chapter3: {
+            title: "事件三｜星夢守衡",
+            quote: "五界星辰失衡，夢境與星圖碎裂。衣衣探夢，岳飛觀星，合力修補星之節律。記憶、預言與星靈泉交織，試煉秩序與情感的平衡。",
+            url: "https://www.canva.com/design/DAGpr0ssDGY/cea9IWFJ6ZBbiyYBGQsKUg/edit?utm_content=DAGpr0ssDGY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+          }
+        }
       },
       {
         name: "一坨大的部落",
@@ -1165,21 +1616,21 @@
         extraCredoDesc: `在噬界族部落裡，雖然吞噬是本能 ，但族人之間若仍會互助、協力製作噬界艦、以幫助弱小族人生存，這種以族群為重、不計個體得失的精神，較符合「義」的本質。`,
         visualNovel: {
           chapter1: {
-          title: "事件一｜吞世的種子",
-          quote: "噬落受命吞噬星核，噬影奉令監視異變。他們在星獸、神性與命令間撕裂選擇，決定吞噬是否是宿命，或是進化的起點。",
-          url: "https://www.canva.com/design/DAGpjsa-5oM/cI8WL8LwM2MPgEpxosOvaw/edit?utm_content=DAGpjsa-5oM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-        },
-        chapter2: {
-          title: "事件二｜噬艦的回音",
-          quote: "噬界族大長老赫‧納古爾與四長老奈赫斯分歧漸深，一為秩序守望，一為共生探索。兩人抉擇將改寫裂渦邊界的命運與族群未來。",
-          url: "https://www.canva.com/design/DAGpjsa-5oM/cI8WL8LwM2MPgEpxosOvaw/edit?utm_content=DAGpjsa-5oM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-        },
-        chapter3: {
-        title: "事件三｜《噬界殘魂錄》",
-        quote: "幽靈長老潛入裂界禁地，追尋幽瘋孽花真相，面對信任與背叛、生與犧牲的抉擇。裂隙低語不止，族運與靈魂的終章即將揭曉。",
-        url: "https://g.co/gemini/share/03730c96672a"
-      } 
-      }
+            title: "事件一｜吞世的種子",
+            quote: "噬落受命吞噬星核，噬影奉令監視異變。他們在星獸、神性與命令間撕裂選擇，決定吞噬是否是宿命，或是進化的起點。",
+            url: "https://www.canva.com/design/DAGpjsa-5oM/cI8WL8LwM2MPgEpxosOvaw/edit?utm_content=DAGpjsa-5oM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+          },
+          chapter2: {
+            title: "事件二｜噬艦的回音",
+            quote: "噬界族大長老赫‧納古爾與四長老奈赫斯分歧漸深，一為秩序守望，一為共生探索。兩人抉擇將改寫裂渦邊界的命運與族群未來。",
+            url: "https://www.canva.com/design/DAGpjsa-5oM/cI8WL8LwM2MPgEpxosOvaw/edit?utm_content=DAGpjsa-5oM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+          },
+          chapter3: {
+            title: "事件三｜《噬界殘魂錄》",
+            quote: "幽靈長老潛入裂界禁地，追尋幽瘋孽花真相，面對信任與背叛、生與犧牲的抉擇。裂隙低語不止，族運與靈魂的終章即將揭曉。",
+            url: "https://g.co/gemini/share/03730c96672a"
+          }
+        }
       }
     ];
 
@@ -1407,6 +1858,216 @@
       missionsBg.style.backgroundColor = "#000";
       missionsBg.style.opacity = 1;
     });
+
+    // 使用事件委派處理所有卡片翻轉
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('click', e => {
+    const card = e.target.closest('.flip-card');
+    if(card) {
+      card.classList.toggle('flipped');
+    }
+  });
+});
+
+// 修正翻轉功能
+document.addEventListener('DOMContentLoaded', () => {
+  // 檢查是否為手機版
+  if (window.innerWidth <= 768) {
+    const sections = ['creator', 'astror', 'transformer'];
+    
+    sections.forEach(section => {
+      const container = document.querySelector(`#extra-${section}`);
+      if (!container) return;
+
+      const imageArea = container.querySelector('.extra-image-area');
+      const textArea = container.querySelector('.extra-text-area');
+      const title = textArea.querySelector('.extra-title').textContent;
+      const desc = textArea.querySelector('.extra-desc').textContent;
+      const img = imageArea.querySelector('img');
+
+      // 清空並重建卡片結構
+      imageArea.innerHTML = `
+        <div class="flip-container">
+          <div class="card-front">
+            <img src="${img.src}" alt="${img.alt}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+          </div>
+          <div class="card-back">
+            <h3>${title}</h3>
+            <p>${desc}</p>
+          </div>
+        </div>
+      `;
+
+      // 綁定點擊事件
+      const flipContainer = imageArea.querySelector('.flip-container');
+      if (flipContainer) {
+        flipContainer.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          flipContainer.classList.toggle('flipped');
+        });
+      }
+    });
+  }
+});
+
+// 新增：更新手機版翻轉卡片內容的函式
+function updateMobileFlipCards() {
+  if (window.innerWidth > 768) return; // 只在手機版執行
+  const sections = ['creator', 'astror', 'transformer'];
+  sections.forEach(section => {
+    const container = document.getElementById(`extra-${section}`);
+    if (!container) return;
+    const textArea = container.querySelector('.extra-text-area');
+    const imageArea = container.querySelector('.extra-image-area');
+    if (!textArea || !imageArea) return;
+    const titleEl = textArea.querySelector('.extra-title');
+    const descEl = textArea.querySelector('.extra-desc');
+    const title = titleEl ? titleEl.textContent : "";
+    const desc = descEl ? descEl.textContent : "";
+    // imageArea 內可能已有翻轉卡結構，但我們以目前 image 裡的 src 為準
+    let imgEl = imageArea.querySelector('img');
+    if (!imgEl) return;
+    const imgSrc = imgEl.src || imgEl.dataset.src;
+
+    // 重新建構翻轉卡片
+    imageArea.innerHTML = `
+      <div class="flip-container">
+        <div class="card-front">
+          <img src="${imgSrc}" alt="${title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+        </div>
+        <div class="card-back">
+          <h3>${title}</h3>
+          <p>${desc}</p>
+        </div>
+      </div>
+    `;
+    // 綁定點擊事件，使卡片能翻轉
+    const flipContainer = imageArea.querySelector('.flip-container');
+    if (flipContainer) {
+      flipContainer.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        flipContainer.classList.toggle('flipped');
+      });
+    }
+  });
+}
+
+// 監聽視窗大小變化，並在手機版時更新翻轉卡片內容
+window.addEventListener('resize', () => {
+  updateMobileFlipCards();
+});
+
+// 頁面載入時初始執行一次
+window.addEventListener('DOMContentLoaded', () => {
+  updateMobileFlipCards();
+});
+
+// 修改 updateTribeInfo 函式
+function updateTribeInfo(tribe) {
+  heroBg.style.backgroundImage = `url('${tribe.blur}')`;
+  heroImg.src = tribe.hero;
+  heroImg.alt = tribe.name;
+  heroTitle.textContent = tribe.name;
+  heroSubtitle.textContent = tribe.subtitle;
+  descTitle.textContent = tribe.descTitle;
+  descContent.innerHTML = tribe.descContent;
+
+  // 更新各額外內容區段，若資料中有提供自訂圖片，則同步更新
+  updateExtraSection('extra-creator', tribe.extraCreatorTitle, tribe.extraCreatorDesc, tribe.extraCreatorImage);
+  updateExtraSection('extra-geolore', tribe.extraGeoloreTitle, tribe.extraGeoloreDesc, tribe.extraGeoloreImage);
+  updateExtraSection('extra-astror', tribe.extraAstrorTitle, tribe.extraAstrorDesc, tribe.extraAstrorImage);
+  updateExtraSection('extra-transformer', tribe.extraTransformerTitle, tribe.extraTransformerDesc, tribe.extraTransformerImage);
+  updateExtraSection('extra-credo', tribe.extraCredoTitle, tribe.extraCredoDesc); // 此處通常僅有文字
+
+  if (tribe.reportUrl && tribe.reportUrl !== "#") {
+    toReportBtn.style.display = '';
+    toReportBtn.onclick = () => {
+      console.log("[DEBUG] Report button clicked for tribe:", tribe.name);
+      window.open(tribe.reportUrl, "_blank");
+    };
+  } else {
+    toReportBtn.style.display = 'none';
+  }
+const vnSection = document.querySelector('.visual-novel-section');
+if (tribe.visualNovel) {
+  // 如果部落資料有視覺小說，就顯示區塊並更新內容
+  vnSection.style.display = 'block';
+
+  const chapters = document.querySelectorAll('.vn-chapter');
+  // 更新章節標題
+  chapters[0].querySelector('.vn-subtitle').textContent = tribe.visualNovel.chapter1.title;
+  chapters[1].querySelector('.vn-subtitle').textContent = tribe.visualNovel.chapter2.title;
+  chapters[2].querySelector('.vn-subtitle').textContent = tribe.visualNovel.chapter3.title;
+
+  // 更新引言文字
+  chapters[0].querySelector('.vn-quote').textContent = tribe.visualNovel.chapter1.quote;
+  chapters[1].querySelector('.vn-quote').textContent = tribe.visualNovel.chapter2.quote;
+  chapters[2].querySelector('.vn-quote').textContent = tribe.visualNovel.chapter3.quote;
+
+  // 更新連結
+  chapters[0].querySelector('.vn-btn').href = tribe.visualNovel.chapter1.url;
+  chapters[1].querySelector('.vn-btn').href = tribe.visualNovel.chapter2.url;
+  chapters[2].querySelector('.vn-btn').href = tribe.visualNovel.chapter3.url;
+
+} else {
+  // 如果沒有，就隱藏整個區塊
+  vnSection.style.display = 'none';
+}
+
+  if (window.innerWidth <= 768) {
+    const sections = ['creator', 'astror', 'transformer'];
+    sections.forEach(section => {
+      const container = document.getElementById(`extra-${section}`);
+      if (!container) return;
+      
+      const textArea = container.querySelector('.extra-text-area');
+      const imageArea = container.querySelector('.extra-image-area');
+      if (!textArea || !imageArea) return;
+
+      const title = textArea.querySelector('.extra-title').textContent;
+      const desc = textArea.querySelector('.extra-desc').textContent;
+      let imgSrc = '';
+
+      // 根據部落和區段選擇正確的圖片
+      switch(section) {
+        case 'creator':
+          imgSrc = tribe.extraCreatorImage;
+          break;
+        case 'astror':
+          imgSrc = tribe.extraAstrorImage;
+          break;
+        case 'transformer':
+          imgSrc = tribe.extraTransformerImage;
+          break;
+      }
+
+      // 更新翻轉卡片內容
+      imageArea.innerHTML = `
+        <div class="flip-container">
+          <div class="card-front">
+            <img src="${imgSrc}" alt="${title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
+          </div>
+          <div class="card-back">
+            <h3>${title}</h3>
+            <p>${desc}</p>
+          </div>
+        </div>
+      `;
+
+      // 重新綁定點擊事件
+      const flipContainer = imageArea.querySelector('.flip-container');
+      if (flipContainer) {
+        flipContainer.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          flipContainer.classList.toggle('flipped');
+        });
+      }
+    });
+  }
+}
   </script>
 
   <!-- Footer -->
