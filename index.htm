@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>學期末成果發表｜五大部落</title>
   <style>
+    
+    html {
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    
     html, body {
       width: 100%; height: 100%; margin: 0; padding: 0;
       font-family: "Noto Sans TC", sans-serif; background: #000; overflow-x: hidden;
@@ -165,7 +173,7 @@
       .fullscreen-header .main-title { font-size: 1.3rem; }
       .fullscreen-header .sub-title { font-size: 0.8rem; }
       .fullscreen-header .scroll-btn { font-size: .88rem; padding: 7px 18px; }
-      .hero-img-container { width: 99vw; }
+      .hero-img-container { width: 50vw; }
       .desc-section { padding: 18px 0 12px; }
       .hero-title { font-size: 1.2rem;}
     }
@@ -537,6 +545,8 @@
     /* 調整寬度 */
     #extra-geolore .extra-desc,
     #extra-credo .extra-desc {
+      font-size: 1.16rem;
+      line-height: 2.1;
       max-width: none; /* 不限制內容寬度 */
       margin: 0 auto;
     }
@@ -1014,7 +1024,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* 內容水平置中 */
+    align-items: center;
     color: white;
     text-align: center;
   }
@@ -1136,8 +1146,238 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     color: white;
   }
+}
+
+/* 卡片背面樣式修正 */
+@media (max-width: 768px) {
+  .card-back {
+    background: rgba(0, 0, 0, 0.95);
+    transform: rotateY(180deg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 標題置中 */
+  .card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* 內文置中 */
+  .card-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0;
+  }
+
+  /* 確保前面圖片也置中 */
+  .card-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* 改善整體卡片容器 */
+  .flip-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 部落信條、地理故事等區塊的共同樣式 */
+  .extra-content-container,
+  .extra-section,
+  .novel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* 圖片容器置中 */
+  .extra-image-area,
+  .novel-block {
+    width: 90% !important;
+    max-width: 400px;
+    margin: 0 auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 圖片樣式 */
+  .extra-image-area img,
+  .novel-block img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* 標題文字置中 */
+  .extra-title,
+  .novel-title {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  /* 描述文字置中 */
+  .extra-desc,
+  .novel-desc {
+    text-align: center;
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  /* 翻轉卡片容器置中 */
+  .flip-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 確保卡片正反面都置中 */
+  .card-front,
+  .card-back {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* --- 手機版內容與圖片強制置中修正 --- */
+@media (max-width: 768px) {
+  /* 主要內容容器置中 */
+  .extra-section,
+  .extra-content-container,
+  .extra-content,
+  .novel-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 20px 0!important;
+  }
+
+  /* 主要圖片區塊置中 */
+  .extra-image-area,
+  .novel-block {
+    width: 90vw !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* 主要圖片置中 */
+  .extra-image-area img,
+  .novel-block img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 12px !important;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+
+  /* 標題與描述文字置中 */
+  .extra-title,
+  .extra-desc,
+  .novel-title,
+  .novel-desc,
+  .vn-title,
+  .vn-subtitle,
+  .vn-quote {
+    text-align: center !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* 視覺小說章節置中 */
+  .vn-chapter {
+    margin: 20px auto !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #extra-geolore .extra-title,
+  #extra-credo .extra-title {
+      /* 參考部落簡述的標題大小 (例如 1.3rem)，根據您的整體設計做調整 */
+      font-size: 1.5rem;
+      line-height: 1.5;
+      text-align: center;
+  }
+  
+  #extra-geolore .extra-desc,
+  #extra-credo .extra-desc {
+      font-size: 1.03rem;
+      line-height: 1.6;
+      text-align: center;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      box-sizing: border-box !important;
+      
+  }
+
+  #extra-creator img,
+  #extra-astror img,
+  #extra-transformer img {
+      object-fit: contain !important; /* 強制使用 contain 模式，確保圖片完整顯示 */
+      
+      /* (可選) 因為圖片完整顯示後，上下可能會留白，加上這個淺色背景會比黑色好看 */
+      background-color: rgba(255, 255, 255, 0.03); 
+  }
+  
 }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
